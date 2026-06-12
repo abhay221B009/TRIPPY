@@ -65,16 +65,31 @@ const App = () => {
       {!hideNavbarFooter && <Navbar />}
 
       <Routes>
-        <Route path="/" element={<Home setTrips={setTrips} refetchTrips={fetchTrips} />} />
+        <Route
+          path="/"
+          element={<Home setTrips={setTrips} refetchTrips={fetchTrips} />}
+        />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route
           path="/trips/:id"
-          element={token ? <TripDetails trips={trips} refetchTrips={fetchTrips} /> : <Navigate to="/signin" />}
+          element={
+            token ? (
+              <TripDetails trips={trips} refetchTrips={fetchTrips} />
+            ) : (
+              <Navigate to="/signin" />
+            )
+          }
         />
         <Route
           path="/trips"
-          element={token ? <Trips trips={trips} setTrips={setTrips} /> : <Navigate to="/signin" />}
+          element={
+            token ? (
+              <Trips trips={trips} setTrips={setTrips} />
+            ) : (
+              <Navigate to="/signin" />
+            )
+          }
         />
       </Routes>
 
@@ -86,10 +101,22 @@ const App = () => {
           <div className="flex items-center justify-center gap-2 mb-2">
             <div
               className="w-6 h-6 rounded-lg flex items-center justify-center"
-              style={{ background: "linear-gradient(135deg, #2563EB 0%, #06B6D4 100%)" }}
+              style={{
+                background: "linear-gradient(135deg, #2563EB 0%, #06B6D4 100%)",
+              }}
             >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="white"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                />
               </svg>
             </div>
             <span
@@ -100,8 +127,19 @@ const App = () => {
             </span>
           </div>
           <p className="text-xs" style={{ color: "#94A3B8" }}>
-            mishty@arc &copy; {new Date().getFullYear()} · AI-powered travel planning
+            mishty@arc &copy; {new Date().getFullYear()} · AI-powered travel
+            planning
           </p>
+          <a
+            href="https://portfolio-abhay-95.vercel.app/
+"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs mt-1 inline-block"
+            style={{ color: "#2563EB" }}
+          >
+            👉Know more about me!
+          </a>
         </footer>
       )}
     </>
